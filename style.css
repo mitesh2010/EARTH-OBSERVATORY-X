@@ -1,559 +1,824 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
+/* reset page things */
 
-body{
-overflow:hidden;
-background:#020812;
-color:white;
-height:100vh;
-}
+* {
 
-#background{
-position:fixed;
-width:100%;
-height:100%;
-background:
-radial-gradient(circle at top,
-#1d3557 0%,
-#08111d 45%,
-#02050a 100%);
-overflow:hidden;
-}
+    margin: 0;
 
-.star{
-position:absolute;
-background:white;
-border-radius:50%;
-opacity:0.8;
-animation:twinkle linear infinite;
-}
+    padding: 0;
 
-@keyframes twinkle{
+    box-sizing: border-box;
 
-0%{
-opacity:0.2;
-}
-
-50%{
-opacity:1;
-}
-
-100%{
-opacity:0.2;
-}
-
-}
-
-#topBar{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:80px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:0 40px;
-z-index:20;
-
-background:
-rgba(255,255,255,0.04);
-
-backdrop-filter:blur(12px);
-
-border-bottom:
-1px solid rgba(255,255,255,0.08);
-}
-
-
-#logo{
-font-size:28px;
-font-weight:bold;
-letter-spacing:3px;
-}
-
-#menu{
-display:flex;
-gap:20px;
-}
-
-.menuBtn{
-padding:12px 22px;
-border-radius:14px;
-
-background:
-rgba(255,255,255,0.04);
-
-border:
-1px solid rgba(255,255,255,0.08);
-
-cursor:pointer;
-transition:0.3s;
-}
-
-.menuBtn:hover{
-background:
-rgba(255,255,255,0.1);
-
-transform:translateY(-2px);
-}
-
-#main{
-position:absolute;
-width:100%;
-height:100%;
-
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-#earthContainer{
-position:relative;
-width:700px;
-height:700px;
-
-display:flex;
-justify-content:center;
-align-items:center;
-}
-
-#connections{
-position:absolute;
-width:100%;
-height:100%;
-overflow:visible;
-pointer-events:none;
-z-index:2;
-}
-
-
-#earthGlow{
-position:absolute;
-width:620px;
-height:620px;
-border-radius:50%;
-
-background:
-radial-gradient(circle,
-rgba(70,150,255,0.25),
-transparent 70%);
-
-filter:blur(30px);
-}
-
-#earth{
-position:absolute;
-
-width:500px;
-height:500px;
-
-border-radius:50%;
-overflow:hidden;
-
-background:
-url("https://upload.wikimedia.org/wikipedia/commons/0/04/Solarsystemscope_texture_8k_earth_daymap.jpg");
-
-background-size:cover;
-background-position:center;
-
-box-shadow:
-0 0 120px rgba(50,120,255,0.35),
-inset -120px -80px 140px rgba(0,0,0,0.7);
-
-transition:0.5s;
-}
-
-#nightShadow{
-position:absolute;
-width:100%;
-height:100%;
-
-background:
-linear-gradient(
-90deg,
-rgba(0,0,0,0),
-rgba(0,0,0,0.25),
-rgba(0,0,0,0.88)
-);
-
-mix-blend-mode:multiply;
-
-animation:
-nightMove 18s linear infinite;
-}
-
-@keyframes nightMove{
-
-from{
-transform:translateX(-40px);
-}
-
-to{
-transform:translateX(40px);
-}
+    font-family: Arial, sans-serif;
 
 }
 
 
-#cityLights{
-position:absolute;
-width:100%;
-height:100%;
 
-background-image:
-radial-gradient(
-circle,
-rgba(255,190,90,0.9) 0%,
-transparent 2%
-);
 
-background-size:
-80px 80px;
 
-mix-blend-mode:screen;
+/* bad behavior page screen hidden */
 
-opacity:0.18;
+body {
 
-animation:
-cityPulse 4s infinite alternate;
-}
+    overflow: hidden;
 
-@keyframes cityPulse{
+    background: #020812;
 
-from{
-opacity:0.1;
-}
+    color: white;
 
-to{
-opacity:0.28;
-}
-
-}
-
-#aurora{
-position:absolute;
-top:0;
-left:0;
-
-width:100%;
-height:35%;
-
-background:
-linear-gradient(
-180deg,
-rgba(0,255,180,0.3),
-transparent
-);
-
-filter:blur(18px);
-
-animation:
-auroraMove 5s infinite alternate;
-}
-
-@keyframes auroraMove{
-
-from{
-transform:translateY(-8px);
-}
-
-to{
-transform:translateY(8px);
-}
+    height: 100vh;
 
 }
 
 
-#heatOverlay{
-position:absolute;
-width:100%;
-height:100%;
 
-background:
-radial-gradient(circle at 30% 40%,
-rgba(255,0,0,0.35),
-transparent 20%),
 
-radial-gradient(circle at 60% 70%,
-rgba(255,120,0,0.3),
-transparent 18%),
 
-radial-gradient(circle at 70% 25%,
-rgba(255,60,0,0.25),
-transparent 16%);
+/* back blue color painting layer */
 
-mix-blend-mode:screen;
+#background {
 
-opacity:0;
-transition:0.5s;
-}
+    position: fixed;
 
-#atmosphere{
-position:absolute;
-width:108%;
-height:108%;
+    width: 100%;
 
-left:-4%;
-top:-4%;
+    height: 100%;
 
-border-radius:50%;
+    background: radial-gradient(circle at top, #1d3557 0%, #08111d 45%, #02050a 100%);
 
-border:
-2px solid rgba(120,200,255,0.22);
-
-box-shadow:
-0 0 40px rgba(120,200,255,0.3),
-0 0 80px rgba(120,200,255,0.15);
-}
-
-.stormIcon{
-position:absolute;
-font-size:34px;
-
-animation:
-stormSpin 5s linear infinite;
-
-filter:
-drop-shadow(0 0 10px cyan);
-}
-
-@keyframes stormSpin{
-
-from{
-transform:rotate(0deg);
-}
-
-to{
-transform:rotate(360deg);
-}
+    overflow: hidden;
 
 }
 
-#radar{
-position:absolute;
 
-left:70px;
-top:150px;
 
-width:280px;
-height:280px;
 
-border-radius:50%;
 
-border:
-2px solid rgba(120,200,255,0.2);
+/* shining dots doing flash flash */
 
-overflow:hidden;
+.star {
 
-background:
-radial-gradient(circle,
-rgba(60,120,200,0.12),
-transparent);
-}
+    position: absolute;
 
-.ring{
+    background: white;
 
-position:absolute;
+    border-radius: 50%;
 
-border:
-1px solid rgba(120,180,255,0.15);
+    opacity: 0.8;
 
-border-radius:50%;
-
-top:50%;
-left:50%;
-
-transform:
-translate(-50%,-50%);
-}
-
-.scan{
-position:absolute;
-
-width:50%;
-height:2px;
-
-background:
-linear-gradient(
-to right,
-rgba(100,200,255,0),
-rgba(100,200,255,1)
-);
-
-top:50%;
-left:50%;
-
-transform-origin:left center;
-
-animation:
-scan 4s linear infinite;}
-
-@keyframes scan{
-
-from{
-transform:rotate(0deg);
-}
-
-to{
-transform:rotate(360deg);
-}
+    animation: twinkle linear infinite;
 
 }
 
-#blips{
-position:absolute;
-width:100%;
-height:100%;
-}
 
-.blip{
-position:absolute;
 
-width:10px;
-height:10px;
+@keyframes twinkle {
 
-border-radius:50%;
+    0% { opacity: 0.2; }
 
-background:#ff2b2b;
+    50% { opacity: 1; }
 
-box-shadow:
-0 0 12px #ff2b2b,
-0 0 30px red;
-
-animation:
-blipFlash 1.2s linear forwards;
-}
-
-@keyframes blipFlash{
-
-0%{
-opacity:0;
-transform:scale(0.2);
-}
-
-20%{
-opacity:1;
-transform:scale(1.4);
-}
-
-100%{
-opacity:0;
-transform:scale(0.4);
-}
+    100% { opacity: 0.2; }
 
 }
 
-#panel{
-position:absolute;
 
-right:40px;
-top:120px;
 
-width:320px;
 
-padding:28px;
 
-border-radius:24px;
+/* top stick bar for click stuff */
 
-background:
-rgba(255,255,255,0.04);
+#topBar {
 
-border:
-1px solid rgba(255,255,255,0.08);
+    position: absolute;
 
-backdrop-filter:blur(12px);
+    top: 0;
 
-z-index:10;
-}
+    left: 0;
 
-#panelTitle{
-font-size:28px;
-margin-bottom:25px;
-}
+    width: 100%;
 
-.data{
-margin-bottom:22px;
-}
+    height: 80px;
 
-.label{
-font-size:13px;
-color:#9fb5ca;
-margin-bottom:8px;
-}
+    display: flex;
 
-.value{
-font-size:24px;
-}
+    justify-content: space-between;
 
-#statusBar{
-position:absolute;
+    align-items: center;
 
-bottom:25px;
-left:50%;
+    padding: 0 40px;
 
-transform:
-translateX(-50%);
+    z-index: 20;
 
-width:70%;
-height:80px;
+    background: rgba(255, 255, 255, 0.04);
 
-border-radius:22px;
+    backdrop-filter: blur(12px);
 
-background:
-rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 
-border:
-1px solid rgba(255,255,255,0.08);
-
-display:flex;
-justify-content:space-around;
-align-items:center;
-
-backdrop-filter:blur(12px);
-}
-
-.statusItem{
-text-align:center;
-}
-
-.statusItem h3{
-font-size:14px;
-color:#9fb5ca;
-margin-bottom:8px;
-}
-
-.statusItem p{
-font-size:22px;
 }
 
 
-.satellite{
-position:absolute;
-border-radius:50%;
 
-background:white;
 
-box-shadow:
-0 0 12px cyan,
-0 0 25px rgba(0,255,255,0.5);
 
-z-index:5;
+/* big logo text letters */
+
+#logo {
+
+    font-size: 28px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
 }
 
 
-.lightning{
-position:absolute;
-width:100%;
-height:100%;
-background:white;
-opacity:0;
-pointer-events:none;
-z-index:50;
-transition:0.2s;
+
+
+
+/* button holder row box */
+
+#menu {
+
+    display: flex;
+
+    gap: 20px;
+
 }
 
+
+
+
+
+/* click blocks on the roof */
+
+.menuBtn {
+
+    padding: 12px 22px;
+
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+
+.menuBtn:hover {
+
+    background: rgba(255, 255, 255, 0.1);
+
+    transform: translateY(-2px);
+
+}
+
+
+
+
+
+/* middle zone container place */
+
+#main {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+
+
+
+/* round square for world circle inside */
+
+#earthContainer {
+
+    position: relative;
+
+    width: 700px;
+
+    height: 700px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+
+
+
+/* net string wire layer drawing */
+
+#connections {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: visible;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+}
+
+
+
+
+
+/* torch light behind ball back */
+
+#earthGlow {
+
+    position: absolute;
+
+    width: 620px;
+
+    height: 620px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(circle, rgba(70, 150, 255, 0.25), transparent 70%);
+
+    filter: blur(30px);
+
+}
+
+
+
+
+
+/* actual big earth map circle ball */
+
+#earth {
+
+    position: absolute;
+
+    width: 500px;
+
+    height: 500px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    background: url("https://upload.wikimedia.org/wikipedia/commons/0/04/Solarsystemscope_texture_8k_earth_daymap.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    box-shadow: 0 0 120px rgba(50, 120, 255, 0.35), inset -120px -80px 140px rgba(0, 0, 0, 0.7);
+
+    transition: 0.5s;
+
+}
+
+
+
+
+
+/* foolish knight darkness side effect */
+
+#nightShadow {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.88));
+
+    mix-blend-mode: multiply;
+
+    animation: nightMove 18s linear infinite;
+
+}
+
+
+
+@keyframes nightMove {
+
+    from { transform: translateX(-40px); }
+
+    to { transform: translateX(40px); }
+
+}
+
+
+
+
+
+/* orange tiny dots house lights */
+
+#cityLights {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 100%;
+
+    background-image: radial-gradient(circle, rgba(255, 190, 90, 0.9) 0%, transparent 2%);
+
+    background-size: 80px 80px;
+
+    mix-blend-mode: screen;
+
+    opacity: 0.18;
+
+    animation: cityPulse 4s infinite alternate;
+
+}
+
+
+
+@keyframes cityPulse {
+
+    from { opacity: 0.1; }
+
+    to { opacity: 0.28; }
+
+}
+
+
+
+
+
+/* green paint sky shine sky */
+
+#aurora {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 35%;
+
+    background: linear-gradient(180deg, rgba(0, 255, 180, 0.3), transparent);
+
+    filter: blur(18px);
+
+    animation: auroraMove 5s infinite alternate;
+
+}
+
+
+
+@keyframes auroraMove {
+
+    from { transform: translateY(-8px); }
+
+    to { transform: translateY(8px); }
+
+}
+
+
+
+
+
+/* red angry hot map skin color */
+
+#heatOverlay {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: radial-gradient(circle at 30% 40%, rgba(255, 0, 0, 0.35), transparent 20%), radial-gradient(circle at 60% 70%, rgba(255, 120, 0, 0.3), transparent 18%), radial-gradient(circle at 70% 25%, rgba(255, 60, 0, 0.25), transparent 16%);
+
+    mix-blend-mode: screen;
+
+    opacity: 0;
+
+    transition: 0.5s;
+
+}
+
+
+
+
+
+/* air bubble circle line outside */
+
+#atmosphere {
+
+    position: absolute;
+
+    width: 108%;
+
+    height: 108%;
+
+    left: -4%;
+
+    top: -4%;
+
+    border-radius: 50%;
+
+    border: 2px solid rgba(120, 200, 255, 0.22);
+
+    box-shadow: 0 0 40px rgba(120, 200, 255, 0.3), 0 0 80px rgba(120, 200, 255, 0.15);
+}
+
+
+
+
+
+/* heavy wind icon spin machine */
+
+.stormIcon {
+
+    position: absolute;
+
+    font-size: 34px;
+
+    animation: stormSpin 5s linear infinite;
+
+    filter: drop-shadow(0 0 10px cyan);
+
+}
+
+
+
+@keyframes stormSpin {
+
+    from { transform: rotate(0deg); }
+
+    to { transform: rotate(360deg); }
+
+}
+
+
+
+
+
+/* green target radar radar circle box */
+
+#radar {
+
+    position: absolute;
+
+    left: 70px;
+
+    top: 150px;
+
+    width: 280px;
+
+    height: 280px;
+
+    border-radius: 50%;
+
+    border: 2px solid rgba(120, 200, 255, 0.2);
+
+    overflow: hidden;
+
+    background: radial-gradient(circle, rgba(60, 120, 200, 0.12), transparent);
+
+}
+
+
+
+
+
+/* round target shapes inside green radar */
+
+.ring {
+
+    position: absolute;
+
+    border: 1px solid rgba(120, 180, 255, 0.15);
+
+    border-radius: 50%;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+}
+
+
+
+
+
+/* stick line running inside circle loop */
+
+.scan {
+
+    position: absolute;
+
+    width: 50%;
+
+    height: 2px;
+
+    background: linear-gradient(to right, rgba(100, 200, 255, 0), rgba(100, 200, 255, 1));
+
+    top: 50%;
+
+    left: 50%;
+
+    transform-origin: left center;
+
+    animation: scan 4s linear infinite;
+
+}
+
+
+
+@keyframes scan {
+
+    from { transform: rotate(0deg); }
+
+    to { transform: rotate(360deg); }
+
+}
+
+
+
+
+
+/* dot party folder collector box */
+
+#blips {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 100%;
+
+}
+
+
+
+
+
+/* scary red blood light flare dot */
+
+.blip {
+
+    position: absolute;
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: #ff2b2b;
+
+    box-shadow: 0 0 12px #ff2b2b, 0 0 30px red;
+
+    animation: blipFlash 1.2s linear forwards;
+
+}
+
+
+
+@keyframes blipFlash {
+
+    0% { opacity: 0; transform: scale(0.2); }
+
+    20% { opacity: 1; transform: scale(1.4); }
+
+    100% { opacity: 0; transform: scale(0.4); }
+
+}
+
+
+
+
+
+/* information board text container box */
+
+#panel {
+
+    position: absolute;
+
+    right: 40px;
+
+    top: 120px;
+
+    width: 320px;
+
+    padding: 28px;
+
+    border-radius: 24px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(12px);
+
+    z-index: 10;
+
+}
+
+
+
+
+
+/* huge letter title on board box */
+
+#panelTitle {
+
+    font-size: 28px;
+
+    margin-bottom: 25px;
+
+}
+
+
+
+
+
+/* tiny details block padding layout */
+
+.data {
+
+    margin-bottom: 22px;
+
+}
+
+
+
+
+
+/* name labels of data rows */
+
+.label {
+
+    font-size: 13px;
+
+    color: #9fb5ca;
+
+    margin-bottom: 8px;
+
+}
+
+
+
+
+
+/* fat numbers inside information text box */
+
+.value {
+
+    font-size: 24px;
+
+}
+
+
+
+
+
+/* floor level wide tracking grid layout */
+
+#statusBar {
+
+    position: absolute;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 70%;
+
+    height: 80px;
+
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    display: flex;
+
+    justify-content: space-around;
+
+    align-items: center;
+
+    backdrop-filter: blur(12px);
+
+}
+
+
+
+
+
+/* child blocks inside bottom plate floor */
+
+.statusItem {
+
+    text-align: center;
+
+}
+
+
+
+
+
+/* header items inside bottom list columns */
+
+.statusItem h3 {
+
+    font-size: 14px;
+
+    color: #9fb5ca;
+
+    margin-bottom: 8px;
+
+}
+
+
+
+
+
+/* wide heavy number values bottom row */
+
+.statusItem p {
+
+    font-size: 22px;
+
+}
+
+
+
+
+
+/* cosmic rock balls floating circle fly */
+
+.satellite {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow: 0 0 12px cyan, 0 0 25px rgba(0, 255, 255, 0.5);
+
+    z-index: 5;
+
+}
+
+
+
+
+
+/* explosive giant screen paint spark flash */
+
+.lightning {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: white;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 50;
+
+    transition: 0.2s;
+
+                                               }
