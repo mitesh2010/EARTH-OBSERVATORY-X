@@ -2,206 +2,223 @@
 <html lang="en">
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Earth Observatory X</title>
+    <title>Earth Observatory X</title>
 
-<link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-<div id="background"></div>
 
-<div class="lightning"
-id="lightning">
-</div>
 
-<div id="topBar">
+    <div id="background"></div>
 
-<div id="logo">
-EARTH OBSERVATORY X
-</div>
 
-<div id="menu">
 
-<div class="menuBtn"
-onclick="showClimate()">
-Climate
-</div>
+    <div class="lightning" id="lightning"></div>
 
-<div class="menuBtn"
-onclick="showSatellites()">
-Satellites
-</div>
 
-<div class="menuBtn"
-onclick="showStorms()">
-Storms
-</div>
 
-<div class="menuBtn"
-onclick="showAnalytics()">
-Analytics
-</div>
+    <div id="topBar">
 
-</div>
 
-</div>
+        <div id="logo">
+            EARTH OBSERVATORY X
+        </div>
 
 
-<div id="radar">
+        <div id="menu">
 
-<div class="ring"
-style="width:70px;height:70px;">
-</div>
+            <div class="menuBtn" onclick="showClimate()">
+                Climate
+            </div>
 
-<div class="ring"
-style="width:140px;height:140px;">
-</div>
+            <div class="menuBtn" onclick="showSatellites()">
+                Satellites
+            </div>
 
-<div class="ring"
-style="width:210px;height:210px;">
-</div>
+            <div class="menuBtn" onclick="showStorms()">
+                Storms
+            </div>
 
-<div class="scan"></div>
+            <div class="menuBtn" onclick="showAnalytics()">
+                Analytics
+            </div>
 
-<div id="blips"></div>
+        </div>
 
-</div>
+    </div>
 
 
-<div id="main">
 
-<div id="earthContainer">
 
-<svg id="connections"></svg>
 
-<div id="earthGlow"></div>
+    <div id="radar">
 
-<div id="earth">
+        <div class="ring" style="width:70px;height:70px;"></div>
 
-<div id="nightShadow"></div>
+        <div class="ring" style="width:140px;height:140px;"></div>
 
-<div id="cityLights"></div>
+        <div class="ring" style="width:210px;height:210px;"></div>
 
-<div id="aurora"></div>
 
-<div id="heatOverlay"></div>
+        <div class="scan"></div>
 
-<div class="stormIcon"
-style="top:130px;left:210px;">
-🌀
-</div>
 
-<div class="stormIcon"
-style="top:290px;left:150px;">
-🌀
-</div>
+        <div id="blips"></div>
 
-<div id="atmosphere"></div>
+    </div>
 
-</div>
 
-</div>
 
 
-<div id="panel">
 
-<h2 id="panelTitle">
-Climate Systems
-</h2>
+    <div id="main">
 
-<div class="data">
 
-<div class="label"
-id="label1">
-GLOBAL TEMPERATURE
-</div>
+        <div id="earthContainer">
 
-<div class="value"
-id="value1">
-14°C
-</div>
 
-</div>
+            <svg id="connections"></svg>
 
-<div class="data">
 
-<div class="label"
-id="label2">
-ACTIVE STORMS
-</div>
+            <div id="earthGlow"></div>
 
-<div class="value"
-id="value2">
-12
-</div>
 
-</div>
+            <div id="earth">
 
-<div class="data">
 
-<div class="label"
-id="label3">
-SATELLITES ONLINE
-</div>
+                <div id="nightShadow"></div>
 
-<div class="value"
-id="value3">
-148
-</div>
 
-</div>
+                <div id="cityLights"></div>
 
-</div>
 
-</div>
+                <div id="aurora"></div>
 
 
-<div id="statusBar">
+                <div id="heatOverlay"></div>
 
-<div class="statusItem">
 
-<h3>
-OCEAN ACTIVITY
-</h3>
+                <div class="stormIcon" style="top:130px;left:210px;">
+                    🌀
+                </div>
 
-<p id="oceanData">
-73%
-</p>
+                <div class="stormIcon" style="top:290px;left:150px;">
+                    🌀
+                </div>
 
-</div>
 
-<div class="statusItem">
+                <div id="atmosphere"></div>
 
-<h3>
-ATMOSPHERIC PRESSURE
-</h3>
+            </div>
 
-<p id="pressureData">
-1012 hPa
-</p>
+        </div>
 
-</div>
 
-<div class="statusItem">
 
-<h3>
-CLOUD DENSITY
-</h3>
 
-<p id="cloudData">
-61%
-</p>
 
-</div>
+        <div id="panel">
 
-</div>
 
-<script src="script.js"></script>`
+            <h2 id="panelTitle">
+                Climate Systems
+            </h2>
+
+
+            <div class="data">
+
+                <div class="label" id="label1">
+                    GLOBAL TEMPERATURE
+                </div>
+
+                <div class="value" id="value1">
+                    14°C
+                </div>
+
+            </div>
+
+            <div class="data">
+
+                <div class="label" id="label2">
+                    ACTIVE STORMS
+                </div>
+
+                <div class="value" id="value2">
+                    12
+                </div>
+
+            </div>
+
+            <div class="data">
+
+                <div class="label" id="label3">
+                    SATELLITES ONLINE
+                </div>
+
+                <div class="value" id="value3">
+                    148
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <div id="statusBar">
+
+
+        <div class="statusItem">
+
+            <h3>
+                OCEAN ACTIVITY
+            </h3>
+
+            <p id="oceanData">
+                73%
+            </p>
+
+        </div>
+
+        <div class="statusItem">
+
+            <h3>
+                ATMOSPHERIC PRESSURE
+            </h3>
+
+            <p id="pressureData">
+                1012 hPa
+            </p>
+
+        </div>
+
+        <div class="statusItem">
+
+            <h3>
+                CLOUD DENSITY
+            </h3>
+
+            <p id="cloudData">
+                61%
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="script.js"></script>
 
 </body>
 </html>
